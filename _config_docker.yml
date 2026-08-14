@@ -1,0 +1,3 @@
+# Overrides for local Docker development
+url: "http://localhost:4000"
+baseurl: ""

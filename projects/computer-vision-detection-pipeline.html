@@ -1,0 +1,157 @@
+---
+layout: project
+lang: en
+lang_equivalent: /ko/projects/computer-vision-detection-pipeline/
+title: "Computer Vision Detection Pipeline | Vania Ortiz Ramos"
+description: "An end-to-end image analysis pipeline for object detection and classification tasks, designed with preprocessing, model inference, and post-processing stages."
+next_project_slug: "data-analysis-prediction-dashboard"
+next_project_title: "Data Analysis & Prediction Dashboard"
+---
+
+<div class="project-hero">
+  <h1>Computer Vision Detection Pipeline</h1>
+  <p class="project-summary">
+    An end-to-end image analysis pipeline for object detection and classification
+    tasks, designed with preprocessing, model inference, and post-processing
+    stages for consistent, scalable visual analysis.
+  </p>
+
+  <div class="project-meta">
+    <div aria-label="Technologies used">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">OpenCV</span>
+      <span class="tech-tag">PyTorch</span>
+      <span class="tech-tag">YOLO</span>
+    </div>
+  </div>
+
+  <div class="project-detail-links">
+    <!-- Uncomment and update when links are available -->
+    <!-- <a href="https://github.com/848vania/cv-detection-pipeline" target="_blank" rel="noopener noreferrer" class="project-detail-link">GitHub &rarr;</a> -->
+  </div>
+</div>
+
+
+<div class="project-section">
+  <h2>Overview</h2>
+  <p>
+    This pipeline automates visual inspection and image analysis workflows by
+    applying computer vision models to detect, classify, and annotate objects
+    in images. It is designed for production use cases where consistent, repeatable
+    analysis at scale is required — replacing manual image review with structured,
+    model-driven outputs.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>Problem</h2>
+  <p>
+    Manual image review is slow, inconsistent, and difficult to scale. Human
+    reviewers are subject to fatigue and varying standards, making it hard to
+    maintain quality across large image volumes. Automated detection needs to
+    handle real-world variability — different lighting conditions, image quality,
+    object scales, and class distributions — reliably and efficiently.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>Solution</h2>
+  <p>
+    The pipeline applies a YOLO-based detection model with preprocessing and
+    post-processing stages designed to normalize input variability and improve
+    inference reliability. Image data flows through a structured pipeline: cleaned,
+    resized, and normalized before inference; then filtered, annotated, and
+    exported after. The result is a consistent, auditable output per image batch.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>Architecture / Workflow</h2>
+  <div class="workflow-steps" aria-label="Pipeline stages">
+    <span class="workflow-step">Data Collection</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Preprocessing</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Annotation</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Training / Inference</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Post-processing</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Visualization</span>
+  </div>
+  <p>
+    Images are collected and organized by class and condition. Preprocessing applies
+    resizing, normalization, and augmentation to standardize input quality. Annotated
+    datasets are used for model training or fine-tuning. During inference, detection
+    outputs go through confidence thresholding, NMS filtering, and class mapping.
+    Results are visualized with bounding boxes and exported as structured data for
+    downstream use.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>Results / Impact</h2>
+  <div class="project-metrics">
+    <div class="metric-card">
+      <span class="metric-value">~85%</span>
+      <span class="metric-label">Detection accuracy on evaluation set</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">5&times;</span>
+      <span class="metric-label">Faster than manual image review</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">100%</span>
+      <span class="metric-label">Consistent scoring across batches</span>
+    </div>
+  </div>
+  <p>
+    The pipeline replaced inconsistent manual review with reproducible automated
+    analysis. Detection speed and consistency were significantly improved, enabling
+    larger volumes to be processed with structured, comparable outputs across runs.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>What I Built</h2>
+  <ul>
+    <li>Image preprocessing scripts for normalization, resizing, and augmentation</li>
+    <li>Inference pipeline with batched processing and GPU acceleration support</li>
+    <li>Post-processing module: confidence filtering, NMS, class mapping, and output formatting</li>
+    <li>Visualization tools for drawing bounding boxes and class labels on output images</li>
+    <li>Evaluation suite measuring precision, recall, mAP, and per-class performance</li>
+    <li>Batch processing interface for running the pipeline on image directories</li>
+  </ul>
+</div>
+
+
+<div class="project-section">
+  <h2>Challenges</h2>
+  <ul>
+    <li>Data quality — noisy annotations and inconsistent image conditions affected early model performance</li>
+    <li>Class imbalance requiring sampling strategies and loss weighting to prevent bias toward majority classes</li>
+    <li>Lighting and background variation causing false positives in edge-case environments</li>
+    <li>Tuning confidence thresholds and NMS parameters for the specific use case without over-suppressing valid detections</li>
+    <li>Evaluation design — selecting meaningful metrics beyond accuracy for imbalanced detection tasks</li>
+  </ul>
+</div>
+
+
+<div class="project-section">
+  <h2>What I Learned</h2>
+  <p>
+    Dataset quality is the single largest factor in detection model performance —
+    more than architecture choices or hyperparameter tuning. Clean annotations,
+    diverse training data, and representative evaluation sets matter more than
+    model size. I also learned how important model interpretability is for applied
+    CV work: understanding where a model fails (not just how often) is what drives
+    meaningful improvement. Error analysis, per-class evaluation, and visualizing
+    failure cases were consistently more valuable than aggregate metrics.
+  </p>
+</div>

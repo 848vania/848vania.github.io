@@ -1,0 +1,30 @@
+{
+  "name": "AI Engineer Portfolio",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "jekyll-site",
+  "remoteEnv": {
+    "VSCODE_SERVER_DIR": "/home/vscode/.vscode-server"
+  },
+  "runArgs": [
+    "--user",
+    "1000:1000"
+  ],
+  "workspaceFolder": "/usr/src/app",
+  "remoteUser": "vscode",
+  "forwardPorts": [4000, 35729],
+  "postCreateCommand": "bundle install",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rebornix.Ruby",
+        "redhat.vscode-yaml",
+        "yzhang.markdown-all-in-one",
+        "ecmel.vscode-html-css",
+        "sibiraj-s.vscode-scss-formatter"
+      ],
+      "settings": {
+        "editor.formatOnSave": true
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+# 학력 — 최신 순 정렬
+# : degree와 focus를 한국어로 번역
+
+- degree: "인공지능 / 컴퓨터공학 석사"
+  university: "성균관대학교"
+  location: "대한민국, 수원"
+  dates: "2023.08 – 2021.08"
+  focus: "머신러닝, 오디오, 자연어처리"
+
+- degree: "한국어 / 외국어"
+  university: "제주대학교"
+  location: "대한민국, 제주"
+  dates: "2021.09 – 2021.07"
+  focus: "한국어"
+
+- degree: "메카트로닉스 공학 / 공학 학사"
+  university: "Universidad Católica Boliviana 'San Pablo'"
+  location: "볼리비아, 라 파스"
+  dates: "2015.07 – 2019.12"
+  focus: "로봇공학, 역학, 알고리즘, 프로그래밍"
+
+- degree: "고등학교 졸업 / 인문학"
+  university: "Unidad Educativa Maria Auxiliadora"
+  location: "볼리비아, 라 파스"
+  dates: "2010.02 – 2012.12"
+  focus: "인문학"

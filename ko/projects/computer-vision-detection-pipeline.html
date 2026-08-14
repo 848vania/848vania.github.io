@@ -1,0 +1,148 @@
+---
+layout: project
+lang: ko
+lang_equivalent: /projects/computer-vision-detection-pipeline/
+title: "TODO: 컴퓨터 비전 감지 파이프라인 | 바니아 오르티스 라모스"
+description: "TODO: 전처리, 모델 추론, 후처리 단계로 설계된 객체 감지 및 분류 작업을 위한 엔드투엔드 이미지 분석 파이프라인."
+next_project_slug: "data-analysis-prediction-dashboard"
+next_project_title: "TODO: 데이터 분석 및 예측 대시보드"
+---
+
+<div class="project-hero">
+  <h1>TODO: 컴퓨터 비전 감지 파이프라인</h1>
+  <p class="project-summary">
+    TODO: 일관되고 확장 가능한 시각 분석을 위해 전처리, 모델 추론,
+    후처리 단계로 설계된 객체 감지 및 분류 작업을 위한 엔드투엔드 이미지 분석 파이프라인.
+  </p>
+
+  <div class="project-meta">
+    <div aria-label="사용 기술">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">OpenCV</span>
+      <span class="tech-tag">PyTorch</span>
+      <span class="tech-tag">YOLO</span>
+    </div>
+  </div>
+
+  <div class="project-detail-links">
+    <!-- 링크 준비 시 주석 해제 -->
+    <!-- <a href="https://github.com/848vania/cv-detection-pipeline" target="_blank" rel="noopener noreferrer" class="project-detail-link">GitHub &rarr;</a> -->
+  </div>
+</div>
+
+
+<div class="project-section">
+  <h2>TODO: 개요</h2>
+  <p>
+    TODO: 이 파이프라인은 컴퓨터 비전 모델을 적용하여 이미지에서 객체를 감지,
+    분류 및 주석 처리함으로써 시각적 검사 및 이미지 분석 워크플로우를 자동화합니다.
+    대규모로 일관되고 반복 가능한 분석이 필요한 프로덕션 사용 사례를 위해 설계되었으며,
+    수동 이미지 검토를 구조화된 모델 기반 출력으로 대체합니다.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>TODO: 문제</h2>
+  <p>
+    TODO: 수동 이미지 검토는 느리고 일관성이 없으며 확장하기 어렵습니다. 인간 검토자는
+    피로와 다양한 기준에 노출되어 대량의 이미지에서 품질을 유지하기 어렵습니다.
+    자동 감지는 다양한 조명 조건, 이미지 품질, 객체 크기 및 클래스 분포를
+    안정적이고 효율적으로 처리해야 합니다.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>TODO: 솔루션</h2>
+  <p>
+    TODO: 이 파이프라인은 입력 변동성을 정규화하고 추론 신뢰성을 향상시키도록
+    설계된 전처리 및 후처리 단계를 갖춘 YOLO 기반 감지 모델을 적용합니다.
+    이미지 데이터는 구조화된 파이프라인을 통해 흐릅니다. 추론 전에 정리, 크기 조정 및
+    정규화되고, 이후에 필터링, 주석 처리 및 내보내기됩니다.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>TODO: 아키텍처 / 워크플로우</h2>
+  <div class="workflow-steps" aria-label="파이프라인 단계">
+    <span class="workflow-step">데이터 수집</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">전처리</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">어노테이션</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">훈련 / 추론</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">후처리</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">시각화</span>
+  </div>
+  <p>
+    TODO: 이미지는 클래스 및 조건별로 수집 및 정리됩니다. 전처리는 크기 조정,
+    정규화 및 증강을 적용하여 입력 품질을 표준화합니다. 주석이 달린 데이터셋은
+    모델 훈련 또는 파인튜닝에 사용됩니다. 추론 중 감지 출력은 신뢰도 임계값 처리,
+    NMS 필터링 및 클래스 매핑을 거칩니다.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>TODO: 결과 / 영향</h2>
+  <div class="project-metrics">
+    <div class="metric-card">
+      <span class="metric-value">~85%</span>
+      <span class="metric-label">TODO: 평가 세트에서의 감지 정확도</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">5&times;</span>
+      <span class="metric-label">TODO: 수동 이미지 검토보다 빠른 속도</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">100%</span>
+      <span class="metric-label">TODO: 배치 전반에 걸친 일관된 점수</span>
+    </div>
+  </div>
+  <p>
+    TODO: 파이프라인은 일관성 없는 수동 검토를 재현 가능한 자동 분석으로 대체했습니다.
+    감지 속도와 일관성이 크게 향상되어 더 많은 볼륨을 처리할 수 있게 되었습니다.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>TODO: 구현 내용</h2>
+  <ul>
+    <li>TODO: 정규화, 크기 조정 및 증강을 위한 이미지 전처리 스크립트</li>
+    <li>TODO: 배치 처리 및 GPU 가속 지원을 갖춘 추론 파이프라인</li>
+    <li>TODO: 후처리 모듈: 신뢰도 필터링, NMS, 클래스 매핑 및 출력 형식화</li>
+    <li>TODO: 출력 이미지에 경계 상자 및 클래스 레이블을 그리는 시각화 도구</li>
+    <li>TODO: 정밀도, 재현율, mAP 및 클래스별 성능을 측정하는 평가 도구</li>
+    <li>TODO: 이미지 디렉토리에서 파이프라인을 실행하기 위한 배치 처리 인터페이스</li>
+  </ul>
+</div>
+
+
+<div class="project-section">
+  <h2>TODO: 어려웠던 점</h2>
+  <ul>
+    <li>TODO: 데이터 품질 — 노이즈가 많은 어노테이션과 일관성 없는 이미지 조건이 초기 모델 성능에 영향</li>
+    <li>TODO: 다수 클래스에 대한 편향을 방지하기 위한 샘플링 전략 및 손실 가중치가 필요한 클래스 불균형</li>
+    <li>TODO: 엣지 케이스 환경에서 오탐지를 유발하는 조명 및 배경 변화</li>
+    <li>TODO: 유효한 감지를 과도하게 억제하지 않으면서 특정 사용 사례에 맞는 신뢰도 임계값 및 NMS 파라미터 조정</li>
+    <li>TODO: 평가 설계 — 불균형 감지 작업에 대한 정확도 이상의 의미 있는 지표 선택</li>
+  </ul>
+</div>
+
+
+<div class="project-section">
+  <h2>TODO: 배운 점</h2>
+  <p>
+    TODO: 데이터셋 품질은 아키텍처 선택이나 하이퍼파라미터 튜닝보다 감지 모델 성능에
+    가장 큰 영향을 미치는 단일 요소입니다. 깨끗한 어노테이션, 다양한 훈련 데이터 및
+    대표적인 평가 세트가 모델 크기보다 더 중요합니다. 모델 해석 가능성이 응용 CV 작업에서
+    얼마나 중요한지도 배웠습니다. 모델이 얼마나 자주 실패하는지가 아니라 어디서 실패하는지
+    이해하는 것이 의미 있는 개선을 이끕니다.
+  </p>
+</div>

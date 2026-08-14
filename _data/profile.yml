@@ -1,0 +1,34 @@
+name: "Vania Miriam Ortiz Ramos"
+role: "AI Engineer"
+location: "Seoul, South Korea"
+
+# Profile photo — place image at assets/img/profile.jpg and set path here
+photo: ""           # /assets/img/profile.jpg
+
+# Contact — fill these in before deploying
+email: "848vania@gmail.com"           # your-email@example.com
+github: "848vania"
+linkedin: "vania-ortiz"        # your LinkedIn username (not full URL)
+
+hero_headline: "AI Engineer building practical machine learning systems."
+hero_subtitle: >
+  AI Engineer specialized in LLMs, agents, and generative AI, with 4+ years
+  of experience building intelligent applications from prototyping to
+  deployment. Experienced in conversational AI, retrieval-augmented 
+  generation, tool-calling workflows, model optimization, and multimodal
+  AI systems. Backed by an MSc in Artificial Intelligence and a track
+  record spanning production engineering, applied NLP, and academic
+  research. 
+# I design and develop AI solutions that turn real-world data into usable
+# products — from data processing and model development to evaluation,
+# APIs, and deployment.
+
+badges:
+  - "AI Engineer"
+  - "Seoul, South Korea"
+  - "Machine Learning"
+  - "LLM Systems"
+  - "Agentic"
+
+# Short bio shown in the profile card (optional)
+bio: "AI Engineer based in Seoul focused on machine learning systems, computer vision, and LLM applications."

@@ -1,0 +1,9 @@
+{% assign group = include.group %}
+<div class="skill-card card" aria-label="{{ group.category }} skills">
+  <h3 class="skill-category">{{ group.category }}</h3>
+  <div class="skill-pills" aria-label="Skills list">
+    {% for skill in group.items %}
+    <span class="skill-pill">{{ skill }}</span>
+    {% endfor %}
+  </div>
+</div>

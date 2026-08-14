@@ -1,0 +1,47 @@
+# Work experience — most recent first.
+# Each entry renders as a card with role, org, dates, and bullet points.
+
+- role: "Deep Learning Engineer / Senior Researcher"
+  organization: "Visualsyn"     
+  location: "Seoul, South Korea"
+  dates: "Present - 2024"
+  bullets:
+    - "Developed multi-variant chatbots for the Glinda platform using both commercial LLM APIs and self-hosted open-source LLMs on an internal server to meet security requirements."
+    - "Optimized self-hosted inference with DeepSpeed to improve generation speed and reduce memory usage, leveraging 8× NVIDIA A100 GPUs with multi-GPU parallelism."
+    - "Designed a routing/RAG architecture that selects different knowledge sources by question type (e.g., conceptual documents vs. platform how-to guidance)."
+    - "Authored a platform usage manual and implemented step-by-step “how-to” routines (e.g., “add a red cylinder”) orchestrated with LangGraph, including tool use when needed."
+    - "Built an autonomous GUI agent (auto-mouse) that takes screenshots + user goals, decomposes tasks into subtasks, and performs actions with before/after verification."
+    - "Implemented a multi-model setup: separate LLMs for planning, action selection, and evaluation, with a specialized vision model for pixel-level UI pointing when general-purpose paid models were unreliable."
+    - "Integrated ComfyUI via API into the platform and implemented workflows to transform text/image inputs into 3D model generation pipelines."
+
+- role: "AI Engineer / Researcher"
+  organization: "Flexsys"     
+  location: "Seoul, South Korea"
+  dates: "2024.06 – 2023.12"
+  bullets:
+    - "Maintained and improved a Hancom HWP add-on that detects “Konglish” terms in documents and recommends replacements based on a dictionary."
+    - "Worked on internal QA and issue triage: reproduced bugs reported by in-house users, identified edge cases, and delivered fixes to stabilize the add-on."
+    - "Enhanced word-replacement accuracy by handling Korean morphological constraints via Kiwi (root/morpheme segmentation) so inserted terms preserved the original conjugation."
+    - "Led a performance refactor by porting the application logic across frontend and backend to C++, incorporating newly discovered edge cases during the rewrite."
+    - "Integrated Hancom's HWPDocument interface into a C++/Qt implementation to improve speed and reliability."
+
+- role: "AI Researcher / Research Assistant"
+  organization: "Sungkyunkwan University"     
+  location: "Suwon, South Korea"
+  dates: "2023.08 – 2021.08"
+  bullets:
+    - "Contributed to an assistive system to help blind users recognize unfamiliar indoor environments using AI-based object recognition."
+    - "Developed the audio module that mapped detected objects to musical instruments and generated short melodies to convey a room's object list."
+    - "Designed a sound-design strategy to keep melodies pleasant and distinguishable while maximizing object identifiability."
+    - "Explored hybrid sound synthesis blending musical instrument timbres with natural sounds to improve semantic recognition (e.g., piano + cat meow)."
+    - "Created prototype synthesized “audio icons” that preserve musical structure while embedding real-world acoustic cues for easier object identification."
+
+- role: "Prototyping Intern / Intern"
+  organization: "Prototyping Laboratory"     
+  location: "La Paz, Bolivia"
+  dates: "2019.09 - 2019.05"
+  bullets:
+    - "Supported local entrepreneurs in prototyping product ideas by creating 3D designs in SolidWorks and assessing feasibility for fabrication (3D printing, laser cutting, and other methods)."
+    - "Designed and built a jewelry display counter inspired by the Tiwanaku pyramids: modeled in SolidWorks, prepared files for laser cutting, and assembled the final structure."
+    - "Assisted architecture students with fabrication by converting existing designs into laser-cut layouts and operating the laser cutter to produce model components."
+    - "Supported workshop fabrication tasks, including metal assembly/welding of waterjet-cut parts (e.g., cubes for a Minesweeper challenge)."

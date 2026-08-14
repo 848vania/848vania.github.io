@@ -1,0 +1,45 @@
+# 주요 프로젝트 — 한국어 번역 (슬러그는 URL 라우팅에 사용되므로 변경하지 마세요)
+# TODO: title과 description을 한국어로 번역
+
+- title: "TODO: LLM 문서 QA 시스템"
+  slug: "llm-document-qa"
+  description: >
+    TODO: 맞춤형 문서 컬렉션에서 질문에 답하는 검색 증강 생성(RAG) 시스템.
+    시맨틱 검색, 컨텍스트 랭킹, REST API를 통한 스트리밍 응답을 지원합니다.
+  tech:
+    - Python
+    - RAG
+    - Embeddings
+    - Vector Search
+    - FastAPI
+  github: ""
+  link: ""
+  featured: true
+
+- title: "TODO: 컴퓨터 비전 감지 파이프라인"
+  slug: "computer-vision-detection-pipeline"
+  description: >
+    TODO: 객체 감지 및 분류 작업을 위한 엔드투엔드 이미지 분석 파이프라인.
+    효율적인 전처리 및 후처리 단계를 포함한 실시간 추론을 위해 설계되었습니다.
+  tech:
+    - Python
+    - OpenCV
+    - PyTorch
+    - YOLO
+  github: ""
+  link: ""
+  featured: true
+
+- title: "TODO: 데이터 분석 및 예측 대시보드"
+  slug: "data-analysis-prediction-dashboard"
+  description: >
+    TODO: 데이터셋 탐색, 트렌드 파악, 모델 기반 예측 생성을 위한
+    인터랙티브 대시보드. 코드 없이 AI 결과를 탐색할 수 있습니다.
+  tech:
+    - Python
+    - Pandas
+    - Scikit-learn
+    - Streamlit
+  github: ""
+  link: ""
+  featured: true

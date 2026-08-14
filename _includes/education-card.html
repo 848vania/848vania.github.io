@@ -1,0 +1,14 @@
+{% assign edu = include.education %}
+<div class="education-card card" aria-label="{{ edu.degree }} at {{ edu.university }}">
+  <div class="edu-header">
+    <h3 class="edu-degree">{{ edu.degree }}</h3>
+    <span class="edu-dates muted">{{ edu.dates }}</span>
+  </div>
+  <p class="edu-institution">
+    {{ edu.university }}
+    {% if edu.location %}&middot; <span class="muted">{{ edu.location }}</span>{% endif %}
+  </p>
+  {% if edu.focus %}
+  <p class="edu-focus muted">{{ edu.focus }}</p>
+  {% endif %}
+</div>

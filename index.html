@@ -1,0 +1,303 @@
+---
+layout: default
+lang: en
+lang_equivalent: /ko/
+title: "Vania Miriam Ortiz Ramos | AI Engineer"
+description: "AI engineer portfolio featuring machine learning projects, technical skills, credentials, education, and experience. Based in Seoul, South Korea."
+---
+
+{% assign profile = site.data.profile %}
+
+<!-- ============================================================
+     ABOUT / HERO
+     ============================================================ -->
+<section id="about" class="hero" aria-label="About Vania Ortiz Ramos">
+  <div class="container">
+
+    <!-- Left: intro text -->
+    <div class="hero-content">
+      <h1>{{ profile.hero_headline }}</h1>
+
+      <p class="hero-subtitle">{{ profile.hero_subtitle }}</p>
+
+      {% if profile.badges %}
+      <div class="hero-badges" aria-label="Key areas">
+        {% for badge in profile.badges %}
+        <span class="hero-badge">{{ badge }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div class="hero-cta">
+        <a href="{{ '/#projects' | relative_url }}" class="btn-primary">View Projects</a>
+        <a href="{{ site.author.cv | relative_url }}" class="btn-secondary">Download CV</a>
+      </div>
+    </div>
+
+    <!-- Right: profile card -->
+    <aside class="profile-card" aria-label="Profile summary">
+
+      <!-- Profile photo — set photo path in _data/profile.yml -->
+      <div class="profile-photo-wrap">
+        {% if profile.photo and profile.photo != "" %}
+        <img
+          src="{{ profile.photo | relative_url }}"
+          alt="Portrait of {{ profile.name }}"
+          class="profile-photo"
+          width="88"
+          height="88"
+        >
+        {% else %}
+        <div class="profile-photo profile-photo--placeholder" role="img" aria-label="Profile photo placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" width="40" height="40">
+            <path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-5.33 0-8 2.67-8 4v1h16v-1c0-1.33-2.67-4-8-4z"/>
+          </svg>
+        </div>
+        {% endif %}
+      </div>
+
+      <p class="profile-name">{{ profile.name }}</p>
+      <p class="profile-role">{{ profile.role }}</p>
+      <p class="profile-location muted">📍 {{ profile.location }}</p>
+
+      <nav class="profile-links" aria-label="Contact and social links">
+        {% if profile.email and profile.email != "" %}
+        <a href="mailto:{{ profile.email }}" class="profile-link">
+          <span class="link-label">Email</span>
+          <span>{{ profile.email }}</span>
+        </a>
+        {% else %}
+        <span class="profile-link">
+          <span class="link-label">Email</span>
+          <span class="muted">— add in _data/profile.yml</span>
+        </span>
+        {% endif %}
+
+        {% if profile.github and profile.github != "" %}
+        <a href="https://github.com/{{ profile.github }}" target="_blank" rel="noopener noreferrer" class="profile-link">
+          <span class="link-label">GitHub</span>
+          <span>github.com/{{ profile.github }}</span>
+        </a>
+        {% endif %}
+
+        {% if profile.linkedin and profile.linkedin != "" %}
+        <a href="https://linkedin.com/in/{{ profile.linkedin }}" target="_blank" rel="noopener noreferrer" class="profile-link">
+          <span class="link-label">LinkedIn</span>
+          <span>{{ profile.linkedin }}</span>
+        </a>
+        {% else %}
+        <span class="profile-link">
+          <span class="link-label">LinkedIn</span>
+          <span class="muted">— add in _data/profile.yml</span>
+        </span>
+        {% endif %}
+
+        <a href="{{ site.author.cv | relative_url }}" class="profile-link">
+          <span class="link-label">CV</span>
+          <span>Download PDF</span>
+        </a>
+      </nav>
+    </aside>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FEATURED PROJECTS
+     ============================================================ -->
+<section id="projects" class="section" aria-label="Featured projects">
+  <div class="container">
+    <div class="section-header">
+      <h2>Featured Projects</h2>
+      <p>Selected AI engineering projects focused on practical machine learning, data-driven systems, and deployable applications.</p>
+    </div>
+
+    <div class="projects-grid">
+      {% for project in site.data.projects %}
+        {% if project.featured %}
+          {% include project-card.html project=project %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     TECHNICAL SKILLS
+     ============================================================ -->
+<section id="skills" class="section" aria-label="Technical skills">
+  <div class="container">
+    <div class="section-header">
+      <h2>Technical Skills</h2>
+      <p>I work across the AI engineering stack: data processing, model development, evaluation, API development, and deployment.</p>
+    </div>
+
+    <div class="skills-grid">
+      {% for group in site.data.skills %}
+        {% include skill-card.html group=group %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     EXPERIENCE
+     ============================================================ -->
+<section id="experience" class="section" aria-label="Work experience">
+  <div class="container">
+    <div class="section-header">
+      <h2>Experience</h2>
+      <p>AI engineering roles, research positions, and hands-on project work.</p>
+    </div>
+
+    <div class="experience-list">
+      {% for job in site.data.experience %}
+        {% include experience-card.html job=job %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CREDENTIALS (Education + Awards + Activities)
+     ============================================================ -->
+<section id="credentials" class="section credentials-section" aria-label="Credentials, awards, education, and activities">
+  <div class="container">
+    <div class="section-header">
+      <h2>Credentials</h2>
+      <p>Recognitions, certifications, training, and education that support my AI engineering work.</p>
+    </div>
+
+    <!-- Education subsection -->
+    <div class="credentials-subsection">
+      <h3 class="subsection-title">Education</h3>
+      <div class="education-grid">
+        {% for edu in site.data.education %}
+          {% include education-card.html education=edu %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Awards & Certifications subsection -->
+    <div class="credentials-subsection">
+      <h3 class="subsection-title">Awards &amp; Certifications</h3>
+      <div class="credentials-grid">
+        {% for cred in site.data.credentials %}
+          {% include credential-card.html credential=cred %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Activities subsection -->
+    <div class="credentials-subsection">
+      <h3 class="subsection-title">Activities</h3>
+      <div class="activities-list">
+        {% for activity in site.data.activities %}
+          <div class="activity-item card">
+            <div class="activity-header">
+              <h3 class="activity-role">{{ activity.role }}</h3>
+              <span class="activity-dates muted">{{ activity.dates }}</span>
+            </div>
+            <p class="activity-org">{{ activity.organization }}</p>
+            {% if activity.bullets %}
+            <ul class="activity-bullets">
+              {% for bullet in activity.bullets %}
+              <li>{{ bullet }}</li>
+              {% endfor %}
+            </ul>
+            {% elsif activity.description %}
+            <p class="muted">{{ activity.description }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PUBLICATIONS / RESEARCH
+     ============================================================ -->
+<section id="research" class="section" aria-label="Publications and research">
+  <div class="container">
+    <div class="section-header">
+      <h2>Publications &amp; Research</h2>
+      <p>Research background and published work in machine learning and AI systems.</p>
+    </div>
+
+    {% assign pubs = site.data.publications %}
+
+    {% if pubs.items and pubs.items.size > 0 %}
+      <div class="publications-list">
+        {% for pub in pubs.items %}
+        <div class="publication-item">
+          <p class="pub-title">{{ pub.title }}</p>
+          <p class="pub-venue">{{ pub.venue }} &middot; {{ pub.year }}</p>
+          {% if pub.description %}
+          <p class="muted">{{ pub.description }}</p>
+          {% endif %}
+          {% if pub.url and pub.url != "" %}
+          <a href="{{ pub.url }}" target="_blank" rel="noopener noreferrer" class="project-link" style="display:inline-block;margin-top:0.5rem;">
+            Read paper &rarr;
+          </a>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      {% if pubs.research_interests %}
+      <div class="research-interests" role="note">
+        <strong style="color: var(--color-soft); display:block; margin-bottom:0.5rem;">Research Interests</strong>
+        {{ pubs.research_interests }}
+      </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section id="contact" class="section" aria-label="Contact">
+  <div class="container">
+    <div class="section-header">
+      <h2>Contact</h2>
+    </div>
+
+    <p class="contact-intro">
+      I'm open to AI engineering roles, research-driven engineering opportunities, and collaborations.
+      Feel free to reach out through any of the channels below.
+    </p>
+
+    <div class="contact-links">
+      {% if profile.email and profile.email != "" %}
+      <a href="mailto:{{ profile.email }}" class="contact-link contact-link--primary">
+        Email me
+      </a>
+      {% endif %}
+
+      {% if profile.github and profile.github != "" %}
+      <a href="https://github.com/{{ profile.github }}" target="_blank" rel="noopener noreferrer" class="contact-link">
+        GitHub
+      </a>
+      {% endif %}
+
+      {% if profile.linkedin and profile.linkedin != "" %}
+      <a href="https://linkedin.com/in/{{ profile.linkedin }}" target="_blank" rel="noopener noreferrer" class="contact-link">
+        LinkedIn
+      </a>
+      {% endif %}
+
+      <a href="{{ site.author.cv | relative_url }}" class="contact-link">
+        Download CV
+      </a>
+    </div>
+  </div>
+</section>

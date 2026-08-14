@@ -1,0 +1,208 @@
+---
+layout: project
+lang: en
+lang_equivalent: /ko/projects/enterprise-rag-assistant/
+title: "Enterprise RAG Assistant | Vania Ortiz Ramos"
+description: "A retrieval-augmented generation system for answering questions over enterprise documents using hybrid vector + keyword search, cross-encoder reranking, citation validation, and a systematic offline evaluation harness."
+next_project_slug: "computer-vision-detection-pipeline"
+next_project_title: "Computer Vision Detection Pipeline"
+---
+
+<div class="project-hero">
+  <h1>Enterprise RAG Assistant</h1>
+  <p class="project-summary">
+    A retrieval-augmented generation system for answering questions over enterprise
+    documents, covering the parts of RAG that are usually skipped in tutorials:
+    hybrid retrieval, cross-encoder reranking, citation validation, refusal behavior,
+    and a systematic evaluation harness for comparing retrieval strategies.
+  </p>
+
+  <div class="project-meta">
+    <div aria-label="Technologies used">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">FastAPI</span>
+      <span class="tech-tag">RAG</span>
+      <span class="tech-tag">ChromaDB</span>
+      <span class="tech-tag">BM25</span>
+      <span class="tech-tag">Cross-Encoder Reranking</span>
+      <span class="tech-tag">OpenAI API</span>
+      <span class="tech-tag">Streamlit</span>
+      <span class="tech-tag">Docker</span>
+    </div>
+  </div>
+
+  <div class="project-detail-links">
+    <a href="https://github.com/848vania/Production_RAG" target="_blank" rel="noopener noreferrer" class="project-detail-link">GitHub &rarr;</a>
+    <!-- <a href="#" target="_blank" rel="noopener noreferrer" class="project-detail-link">Live Demo &rarr;</a> -->
+  </div>
+</div>
+
+
+<div class="project-section">
+  <h2>Overview</h2>
+  <p>
+    This system enables users to query a set of enterprise policy and handbook
+    documents using natural language and receive grounded, cited answers instead
+    of raw search results. It's a personal/portfolio project built against a
+    synthetic enterprise document set (ten policy and handbook documents for a
+    fictional company) in a single-user local setup, designed to demonstrate a
+    production-shaped RAG pipeline rather than a minimal retrieval demo: hybrid
+    search, reranking, hard citation gating, refusal handling, query logging, and
+    a repeatable experiment framework for comparing retrieval configurations.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>Problem</h2>
+  <p>
+    Most RAG tutorials stop at "embed, retrieve, generate" and gloss over the
+    failure modes that matter in practice: retrieval methods disagree on what's
+    relevant, models cite sources they weren't actually given, and there's rarely
+    a way to tell whether a change to chunking or retrieval strategy actually
+    helped. The goal here was to build and evaluate those missing pieces directly,
+    with measurable evidence of what worked and what didn't.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>Solution</h2>
+  <p>
+    The system combines dense vector search (ChromaDB) with sparse keyword search
+    (BM25), fuses the two into a hybrid score, and optionally reranks the merged
+    results with a cross-encoder before generation. Answers are produced via
+    structured output from the OpenAI API, and every claim in the response must
+    carry a <code>[Source N]</code> citation. Citations aren't trusted at face
+    value &mdash; the pipeline independently parses them out of the model's own
+    answer and cross-checks each one against the chunks that were actually
+    retrieved, refusing to answer rather than passing through an uncited or
+    mis-cited claim. A separate sufficiency check refuses low-confidence queries
+    before generation ever runs. Every retrieval configuration is swappable via
+    YAML, which made it possible to benchmark vector-only, keyword-only, hybrid,
+    and hybrid+reranker setups against the same labeled question set.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>Architecture / Workflow</h2>
+  <div class="workflow-steps" aria-label="Pipeline stages">
+    <span class="workflow-step">Ingestion</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Section-Aware Chunking</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Embeddings</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Vector + BM25 Index</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Hybrid Retrieval</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Cross-Encoder Rerank</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Grounding Check</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Generation + Citation Validation</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">FastAPI / Streamlit</span>
+  </div>
+  <p>
+    Documents are loaded from Markdown/text (with a PyMuPDF-first, pypdf-fallback
+    path built in for PDFs) and cleaned to normalize unicode, rejoin hyphenated
+    line-wraps, and strip control characters. Chunking is section-aware: documents
+    are split on Markdown headings first, then any oversized section is broken
+    into overlapping fixed-size windows (800 characters, 100-character overlap).
+    Chunks are embedded with OpenAI's <code>text-embedding-3-small</code> and
+    stored in ChromaDB, alongside a parallel BM25 keyword index. At query time,
+    vector and keyword results are fused with weighted score combination (0.6
+    vector / 0.4 keyword by default), optionally reranked with a
+    <code>ms-marco-MiniLM-L-6-v2</code> cross-encoder, and checked for sufficient
+    relevance before being handed to the LLM. The model generates a structured,
+    cited answer through FastAPI (<code>/chat</code>, <code>/documents/ingest</code>,
+    <code>/evaluation/run</code>), and a Streamlit frontend provides chat,
+    evaluation-comparison, and live monitoring dashboards on top of the same API.
+    The whole stack runs via Docker Compose (API + Streamlit + a Qdrant container
+    reserved for a future vector-store swap).
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>Results / Impact</h2>
+  <div class="project-metrics">
+    <div class="metric-card">
+      <span class="metric-value">4</span>
+      <span class="metric-label">Retrieval configurations benchmarked head-to-head</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">71</span>
+      <span class="metric-label">Hand-labeled evaluation questions across 4 categories</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">63.4%</span>
+      <span class="metric-label">Best Recall@5, achieved by vector-only and hybrid+reranker</span>
+    </div>
+  </div>
+  <p>
+    Rather than assuming hybrid retrieval or reranking would automatically win,
+    all four configurations were run against the same labeled question set and
+    compared on recall, reciprocal rank, citation accuracy, refusal accuracy, and
+    answer correctness. The results were informative precisely because they
+    weren't what a tutorial would predict: naive hybrid fusion actually
+    underperformed vector-only retrieval on Recall@5 (54.9% vs. 63.4%), while
+    adding the cross-encoder reranker on top of hybrid retrieval recovered recall
+    to parity with vector-only and produced the best reciprocal rank (0.60) and
+    refusal accuracy (91.5%) &mdash; at roughly double the latency (16.9s vs. 8.3s).
+    That kind of measured tradeoff, not a single "best" pipeline, is the actual
+    output of the evaluation harness.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>What I Built</h2>
+  <ul>
+    <li>Document ingestion and cleaning pipeline with section-aware Markdown chunking and a PDF extraction fallback path (PyMuPDF &rarr; pypdf)</li>
+    <li>Hybrid retrieval combining ChromaDB vector search and BM25 keyword search, with normalized, weighted score fusion</li>
+    <li>Cross-encoder reranking stage and a grounding/refusal gate based on retrieval confidence</li>
+    <li>Citation validation that regex-parses the model's own cited sources and cross-checks them against retrieved chunk IDs before returning an answer</li>
+    <li>FastAPI REST endpoints for chat, document ingestion, and evaluation, backed by structured (schema-validated) LLM output</li>
+    <li>A YAML-driven experiment runner that sweeps retrieval configurations and produces recall/precision/citation/refusal/correctness metrics per config</li>
+    <li>SQLite-backed query logging and a monitoring layer (latency, cost, refusal rate, confidence distribution)</li>
+    <li>Three Streamlit dashboards: chat interface, experiment comparison with a failure-case viewer, and live query monitoring</li>
+    <li>Docker Compose deployment (API + frontend, with a Qdrant container scaffolded for a future vector-store swap)</li>
+    <li>53 pytest tests across 19 files covering chunking, retrieval, reranking, grounding, generation, evaluation metrics, and the API layer</li>
+  </ul>
+</div>
+
+
+<div class="project-section">
+  <h2>Challenges</h2>
+  <ul>
+    <li>Normalizing heterogeneous relevance scores (Chroma's L2/cosine/inner-product distances and BM25's raw scores) onto a common 0&ndash;1 scale so vector and keyword results could be fused meaningfully</li>
+    <li>Discovering that naive hybrid fusion underperformed vector-only retrieval on Recall@5, and having to trust the evaluation numbers over the intuitive assumption that combining methods should help</li>
+    <li>Tracking down and fixing a bug where the experiment runner was reading from a single global settings object instead of each YAML config, which silently made all four benchmarked configurations produce identical results until the config was threaded explicitly through the retrieval and generation calls</li>
+    <li>Treating citation grounding as a hard, independently verified gate rather than a prompt instruction the model might not reliably follow</li>
+    <li>Balancing reranking's accuracy gains against its roughly 2x latency cost, and making that tradeoff visible in the evaluation results instead of hiding it</li>
+  </ul>
+</div>
+
+
+<div class="project-section">
+  <h2>What I Learned</h2>
+  <p>
+    The most useful part of this project was building the evaluation harness
+    before trusting any intuition about what "should" work. Hybrid retrieval and
+    reranking are common defaults in RAG writeups, but measuring them against a
+    labeled question set surfaced a real, counterintuitive result: hybrid fusion
+    alone was worse than vector search alone, and only reranking on top of hybrid
+    closed the gap &mdash; at a real latency cost. That reinforced that retrieval
+    quality has to be measured stage by stage, not assumed from architecture
+    diagrams, and that grounding mechanisms like citation validation are worth
+    enforcing in code rather than leaving to prompt instructions alone. It also
+    left me with a clear list of deliberately unfinished edges (no token-budget
+    management in the prompt builder, stubbed Ollama/Qdrant/local-embedding
+    providers) that mark where the system was built for extensibility rather than
+    completeness.
+  </p>
+</div>

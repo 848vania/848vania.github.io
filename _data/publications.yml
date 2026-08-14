@@ -1,0 +1,10 @@
+# Research interests and publications.
+# If you have no publications yet, the research_interests block is shown instead.
+# Add real publications to the items list when available.
+
+items:
+  - title: "Synthesis of Disparate Audio Species via Recurrent Neural Network"
+    venue: "IEEE International Symposium on Multimedia"
+    year: 2023
+    description: "This study presents a method for synthesizing disparate sound species, in particular, music and natural sounds in real-time by interpolating the timbre embedding of music and natural sounds together with independent pitch conditioning, where a bidirectional LSTM stack is used to encode a full sequence of music and natural sounds while disentangling pitch from timbre."
+    url: "https://ieeexplore.ieee.org/document/10473470"

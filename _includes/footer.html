@@ -1,0 +1,29 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container footer-inner">
+    <div class="footer-identity">
+      <span class="footer-name">{{ site.author.name }}</span>
+      <span class="footer-role muted">{{ site.author.role }} &middot; {{ site.author.location }}</span>
+    </div>
+
+    <nav class="footer-links" aria-label="Social links">
+      {% if site.author.email and site.author.email != "" %}
+      <a href="mailto:{{ site.author.email }}" aria-label="Email">
+        Email
+      </a>
+      {% endif %}
+      {% if site.author.github and site.author.github != "" %}
+      <a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+        GitHub
+      </a>
+      {% endif %}
+      {% if site.author.linkedin and site.author.linkedin != "" %}
+      <a href="https://linkedin.com/in/{{ site.author.linkedin }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+        LinkedIn
+      </a>
+      {% endif %}
+      <a href="{{ site.author.cv | relative_url }}" aria-label="Download CV">CV</a>
+    </nav>
+
+    <p class="footer-copy muted">&copy; {{ 'now' | date: "%Y" }} {{ site.author.name }}</p>
+  </div>
+</footer>

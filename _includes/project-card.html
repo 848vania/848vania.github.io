@@ -1,0 +1,32 @@
+{% assign project = include.project %}
+{% if page.lang == 'ko' %}{% assign project_base = '/ko/projects/' %}{% assign ui_view_project = '프로젝트 보기 →' %}{% else %}{% assign project_base = '/projects/' %}{% assign ui_view_project = 'View project →' %}{% endif %}
+<article class="project-card card" aria-label="{{ project.title }}">
+  <h3 class="project-title">{{ project.title }}</h3>
+  <p class="project-desc muted">{{ project.description }}</p>
+
+  {% if project.tech %}
+  <div class="project-tech" aria-label="Technologies used">
+    {% for tag in project.tech %}
+    <span class="tech-tag">{{ tag }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="project-links">
+    {% if project.slug and project.slug != "" %}
+    <a href="{{ project_base | append: project.slug | append: '/' | relative_url }}" class="project-link project-link--view" aria-label="View {{ project.title }} project details">
+      {{ ui_view_project }}
+    </a>
+    {% endif %}
+    {% if project.github and project.github != "" %}
+    <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View {{ project.title }} on GitHub">
+      GitHub &rarr;
+    </a>
+    {% endif %}
+    {% if project.link and project.link != "" %}
+    <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View {{ project.title }} live demo">
+      Live demo &rarr;
+    </a>
+    {% endif %}
+  </div>
+</article>

@@ -1,0 +1,34 @@
+title: "Vania Miriam Ortiz Ramos"
+description: "AI Engineer portfolio focused on practical machine learning systems."
+url: "https://848vania.github.io"
+baseurl: ""
+
+author:
+  name: "Vania Miriam Ortiz Ramos"
+  role: "AI Engineer"
+  location: "Seoul, South Korea"
+  email: "848vani@gmail.com"           
+  github: "848vania"
+  linkedin: "vania-ortiz"        # TODO: add your LinkedIn handle (not full URL)
+  cv: "/assets/files/cv.pdf"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Exclude from build output
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - Dockerfile
+  - docker-compose.yml
+  - .devcontainer
+  - .github
+  - vendor
+  - node_modules

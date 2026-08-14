@@ -1,0 +1,26 @@
+# Education entries — most recent first.
+# Replace placeholders with real institution names and dates.
+
+- degree: "M.S. in Artificial Intelligence / Computer Science"
+  university: "Sungkyunkwan University"         
+  location: "Suwon, South Korea"
+  dates: "2023.08 – 2021.08"
+  focus: "Machine Learning, Audio, Natural Language Processing"
+
+- degree: "Korean / Foreign Language"
+  university: "Jeju National University"         
+  location: "Jeju, South Korea"
+  dates: "2021.09 – 2021.07"
+  focus: "Korean Language"
+
+- degree: "B.S. in Mechatronics Engineering / Engineering"
+  university: "Universidad Catolica Boliviana 'San Pablo'"         
+  location: "La Paz, Bolivia"                   
+  dates: "2015.07 – 2019.12"
+  focus: "Robotics, Mechanics, Algorithms, Programming"
+
+- degree: "High School Diploma / Humanities"
+  university: "Unidad Educativa Maria Auxiliadora"         
+  location: "La Paz, Bolivia"                   
+  dates: "2010.02 – 2012.12"
+  focus: "Humanities"

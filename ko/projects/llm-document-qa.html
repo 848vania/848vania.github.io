@@ -1,0 +1,156 @@
+---
+layout: project
+lang: ko
+lang_equivalent: /projects/llm-document-qa/
+title: "TODO: LLM 문서 QA 시스템 | 바니아 오르티스 라모스"
+description: "TODO: 시맨틱 검색, 컨텍스트 랭킹, API 기반 응답 생성을 사용하여 맞춤형 문서 컬렉션에서 질문에 답하는 검색 증강 생성 시스템."
+next_project_slug: "computer-vision-detection-pipeline"
+next_project_title: "TODO: 컴퓨터 비전 감지 파이프라인"
+---
+
+<div class="project-hero">
+  <h1>TODO: LLM 문서 QA 시스템</h1>
+  <p class="project-summary">
+    TODO: 시맨틱 검색, 컨텍스트 랭킹, API 기반 응답 생성을 사용하여
+    맞춤형 문서 컬렉션에서 질문에 답하는 검색 증강 생성(RAG) 시스템.
+  </p>
+
+  <div class="project-meta">
+    <div aria-label="사용 기술">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">RAG</span>
+      <span class="tech-tag">Embeddings</span>
+      <span class="tech-tag">Vector Search</span>
+      <span class="tech-tag">FastAPI</span>
+    </div>
+  </div>
+
+  <div class="project-detail-links">
+    <!-- 링크 준비 시 주석 해제 -->
+    <!-- <a href="https://github.com/848vania/llm-document-qa" target="_blank" rel="noopener noreferrer" class="project-detail-link">GitHub &rarr;</a> -->
+    <!-- <a href="#" target="_blank" rel="noopener noreferrer" class="project-detail-link">라이브 데모 &rarr;</a> -->
+  </div>
+</div>
+
+
+<div class="project-section">
+  <h2>TODO: 개요</h2>
+  <p>
+    TODO: 이 시스템을 통해 사용자는 자연어를 사용하여 대규모 비정형 문서 컬렉션을
+    쿼리할 수 있습니다. 파일을 수동으로 검색하는 대신, 사용자는 질문을 하고
+    컨텍스트 기반 답변을 받습니다. 이 시스템은 빠르고 정확한 정보 검색이 중요한
+    내부 지식 베이스, 연구 아카이브 및 문서 중심 워크플로우를 위해 설계되었습니다.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>TODO: 문제</h2>
+  <p>
+    TODO: 조직은 키워드 기반 도구로 검색하기 어려운 보고서, 매뉴얼, 연구 논문,
+    내부 메모 등 대량의 비정형 문서를 축적합니다. 사용자는 전체 문서를 읽거나
+    복잡한 검색 쿼리를 구성하지 않고도 특정 정보를 빠르게 찾아야 합니다.
+    기존 검색은 문서를 반환하지만, 사용자에게는 답변이 필요합니다.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>TODO: 솔루션</h2>
+  <p>
+    TODO: 이 시스템은 검색 증강 생성(RAG)을 적용하여 시맨틱 검색과 언어 모델
+    추론을 연결합니다. 문서는 전처리되고, 겹치는 구절로 청크화되며, 벡터 데이터베이스에
+    임베딩됩니다. 쿼리 시 의미적으로 관련된 구절이 검색 및 랭킹되어 답변 생성을 위한
+    그라운딩된 컨텍스트로 언어 모델에 전달됩니다. 모든 응답에 출처 정보가 포함됩니다.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>TODO: 아키텍처 / 워크플로우</h2>
+  <div class="workflow-steps" aria-label="파이프라인 단계">
+    <span class="workflow-step">수집</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">전처리</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">임베딩</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">벡터 DB</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">검색</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">프롬프트 구성</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">응답 생성</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">REST API</span>
+  </div>
+  <p>
+    TODO: 문서는 여러 형식에서 수집되어 정리되고, 구성 가능한 크기와 스트라이드로
+    겹치는 청크로 분할됩니다. 각 청크는 임베딩되어 벡터 인덱스에 저장됩니다.
+    사용자 쿼리는 상위 k개의 관련 구절을 반환하는 시맨틱 검색을 트리거하며,
+    이는 토큰 예산 관리와 함께 구조화된 프롬프트로 조합됩니다. 언어 모델이
+    답변을 생성하고 FastAPI 엔드포인트를 통해 스트리밍 옵션과 함께 반환됩니다.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>TODO: 결과 / 영향</h2>
+  <div class="project-metrics">
+    <div class="metric-card">
+      <span class="metric-value">~70%</span>
+      <span class="metric-label">TODO: 수동 문서 검색 시간 단축</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">&lt;&nbsp;2s</span>
+      <span class="metric-label">TODO: 평균 엔드투엔드 쿼리 지연 시간</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">10k+</span>
+      <span class="metric-label">TODO: 수집 실행당 인덱싱된 문서 수</span>
+    </div>
+  </div>
+  <p>
+    TODO: 이 시스템은 사용자가 문서 컬렉션에서 정보를 찾는 데 소요하는 시간을
+    크게 단축시켰습니다. 답변에는 인용된 출처 구절이 포함되어 신뢰도를 높이고
+    사용자가 소스 자료와 대조하여 출력을 직접 검증할 수 있습니다.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>TODO: 구현 내용</h2>
+  <ul>
+    <li>TODO: 구성 가능한 오버랩 및 구절 길이를 갖춘 문서 수집 및 청킹 파이프라인</li>
+    <li>TODO: 배치 처리를 통한 임베딩 생성 파이프라인 및 벡터 데이터베이스 인덱싱</li>
+    <li>TODO: 향상된 관련성 품질을 위한 리랭킹 시맨틱 검색</li>
+    <li>TODO: 컨텍스트 주입 및 토큰 예산 관리를 포함한 프롬프트 구성 모듈</li>
+    <li>TODO: 스트리밍 응답 지원 및 출처 표시를 갖춘 FastAPI REST 엔드포인트</li>
+    <li>TODO: 검색 정밀도, 재현율 및 답변 품질 점수를 위한 평가 스크립트</li>
+  </ul>
+</div>
+
+
+<div class="project-section">
+  <h2>TODO: 어려웠던 점</h2>
+  <ul>
+    <li>TODO: 검색 경계에서 컨텍스트를 보존하기 위한 최적 청크 크기 및 오버랩 결정</li>
+    <li>TODO: 검색 관련성 — 다양한 쿼리 유형에 걸쳐 상위 k 결과에서 재현율과 정밀도 균형 맞추기</li>
+    <li>TODO: 검색된 구절에 엄격하게 답변을 그라운딩하여 환각 제어</li>
+    <li>TODO: 부하 하에서 임베딩, 검색 및 생성 단계의 지연 시간 관리</li>
+    <li>TODO: 이기종 형식(PDF, 표, 헤더, 각주)의 문서 처리</li>
+  </ul>
+</div>
+
+
+<div class="project-section">
+  <h2>TODO: 배운 점</h2>
+  <p>
+    TODO: 효과적인 RAG 시스템 구축은 엔지니어링 도전만큼이나 평가 도전이기도 합니다.
+    검색 품질이 답변 품질을 직접 결정합니다 — 잘못된 청킹이나 임베딩 선택은
+    파이프라인 전체에 오류를 전파합니다. 각 단계의 체계적인 평가, 명시적인 그라운딩
+    전략, 사용자 중심 설계(출처 표시, 신뢰도 신호, 우아한 성능 저하)가 신뢰할 수
+    있는 AI 시스템을 그저 그럴듯하게 들리는 출력만 생성하는 시스템과 구분짓습니다.
+  </p>
+</div>

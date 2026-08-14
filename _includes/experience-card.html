@@ -1,0 +1,20 @@
+{% assign job = include.job %}
+<div class="experience-card card" aria-label="{{ job.role }} at {{ job.organization }}">
+  <div class="exp-header">
+    <div>
+      <h3 class="exp-role">{{ job.role }}</h3>
+      <p class="exp-org">
+        {{ job.organization }}
+        {% if job.location %}&middot; <span class="muted">{{ job.location }}</span>{% endif %}
+      </p>
+    </div>
+    <span class="exp-dates muted">{{ job.dates }}</span>
+  </div>
+  {% if job.bullets %}
+  <ul class="exp-bullets" aria-label="Responsibilities and achievements">
+    {% for bullet in job.bullets %}
+    <li>{{ bullet }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>

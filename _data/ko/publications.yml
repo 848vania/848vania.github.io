@@ -1,0 +1,9 @@
+# 연구 관심사 및 논문
+# TODO: research_interests를 한국어로 번역
+
+items:
+  - title: "Synthesis of Disparate Audio Species via Recurrent Neural Network"
+    venue: "IEEE International Symposium on Multimedia"
+    year: 2023
+    description: "This study presents a method for synthesizing disparate sound species, in particular, music and natural sounds in real-time by interpolating the timbre embedding of music and natural sounds together with independent pitch conditioning, where a bidirectional LSTM stack is used to encode a full sequence of music and natural sounds while disentangling pitch from timbre."
+    url: "https://ieeexplore.ieee.org/document/10473470"

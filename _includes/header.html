@@ -1,0 +1,40 @@
+{% if page.lang == 'ko' %}{% assign sec_prefix = '/ko/' %}{% else %}{% assign sec_prefix = '/' %}{% endif %}
+<header class="site-header" role="banner">
+  <nav class="nav container" aria-label="Main navigation">
+    <a class="nav-logo" href="{{ sec_prefix | relative_url }}" aria-label="{{ site.author.name }} home">
+      Vania Ortiz
+    </a>
+
+    <button
+      class="nav-hamburger"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="nav-links"
+      type="button"
+    >
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="{{ sec_prefix | append: '#about' | relative_url }}">About</a></li>
+      <li><a href="{{ sec_prefix | append: '#projects' | relative_url }}">Projects</a></li>
+      <li><a href="{{ sec_prefix | append: '#skills' | relative_url }}">Skills</a></li>
+      <li><a href="{{ sec_prefix | append: '#experience' | relative_url }}">Experience</a></li>
+      <li><a href="{{ sec_prefix | append: '#credentials' | relative_url }}">Credentials</a></li>
+      <li><a href="{{ sec_prefix | append: '#research' | relative_url }}">Research</a></li>
+      <li><a href="{{ sec_prefix | append: '#contact' | relative_url }}">Contact</a></li>
+      <li>
+        {% if page.lang == 'ko' %}
+        <a href="{{ page.lang_equivalent | default: '/' | relative_url }}" class="nav-lang-toggle" lang="en" aria-label="Switch to English">EN</a>
+        {% else %}
+        <a href="{{ page.lang_equivalent | default: '/ko/' | relative_url }}" class="nav-lang-toggle" lang="ko" aria-label="한국어로 전환">KR</a>
+        {% endif %}
+      </li>
+      <li>
+        <a href="{{ site.author.cv | relative_url }}" class="nav-cv-link">CV</a>
+      </li>
+    </ul>
+  </nav>
+</header>

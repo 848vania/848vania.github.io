@@ -1,0 +1,161 @@
+---
+layout: project
+lang: en
+lang_equivalent: /ko/projects/data-analysis-prediction-dashboard/
+title: "Data Analysis & Prediction Dashboard | Vania Ortiz Ramos"
+description: "An interactive dashboard for exploring datasets, identifying trends, and generating model-based predictions for non-technical users."
+next_project_slug: "llm-document-qa"
+next_project_title: "LLM Document QA System"
+---
+
+<div class="project-hero">
+  <h1>Data Analysis &amp; Prediction Dashboard</h1>
+  <p class="project-summary">
+    An interactive dashboard for exploring datasets, identifying trends, and
+    generating model-based predictions — designed so non-technical stakeholders
+    can access and interpret AI outputs without writing code.
+  </p>
+
+  <div class="project-meta">
+    <div aria-label="Technologies used">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">Pandas</span>
+      <span class="tech-tag">Scikit-learn</span>
+      <span class="tech-tag">Streamlit</span>
+    </div>
+  </div>
+
+  <div class="project-detail-links">
+    <!-- Uncomment and update when links are available -->
+    <!-- <a href="https://github.com/848vania/prediction-dashboard" target="_blank" rel="noopener noreferrer" class="project-detail-link">GitHub &rarr;</a> -->
+    <!-- <a href="#" target="_blank" rel="noopener noreferrer" class="project-detail-link">Live Demo &rarr;</a> -->
+  </div>
+</div>
+
+
+<div class="project-section">
+  <h2>Overview</h2>
+  <p>
+    This dashboard gives stakeholders a self-service interface for exploring
+    structured data, running model-based predictions, and understanding AI outputs
+    — without writing a single line of code. It wraps a data processing and
+    machine learning pipeline in an intuitive web UI, making analytical insights
+    accessible across technical and non-technical teams.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>Problem</h2>
+  <p>
+    Data teams produce models and analyses that stakeholders need to act on, but
+    the gap between technical output and business-readable insight is often wide.
+    Reports take time to generate, predictions require engineering support to run,
+    and static charts can't answer follow-up questions. Decision-makers need
+    live, interactive access to the data and model outputs relevant to their work.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>Solution</h2>
+  <p>
+    The dashboard wraps a Scikit-learn prediction pipeline and a Pandas data
+    processing layer in a Streamlit interface. Users can upload or select a
+    dataset, explore distributions and trends through interactive visualizations,
+    run predictions on new inputs, and view model outputs alongside feature
+    importance summaries. All outputs are presented in plain language with
+    visual context.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>Architecture / Workflow</h2>
+  <div class="workflow-steps" aria-label="Pipeline stages">
+    <span class="workflow-step">Data Loading</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Cleaning</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Feature Engineering</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Model Inference</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Visualization</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Dashboard UI</span>
+  </div>
+  <p>
+    Raw data is loaded and cleaned through a Pandas pipeline that handles missing
+    values, type inference, and outlier flagging. Feature engineering prepares
+    inputs for the trained Scikit-learn model. Predictions and confidence scores
+    are returned in real time. Streamlit renders the UI, charts, and model
+    explanation components — all in a single Python application with no separate
+    frontend required.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>Results / Impact</h2>
+  <div class="project-metrics">
+    <div class="metric-card">
+      <span class="metric-value">~80%</span>
+      <span class="metric-label">Prediction accuracy on held-out test data</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">4&times;</span>
+      <span class="metric-label">Faster reporting compared to manual process</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">0</span>
+      <span class="metric-label">Lines of code needed by end users</span>
+    </div>
+  </div>
+  <p>
+    The dashboard eliminated the need for stakeholders to request custom analyses
+    from the data team for common questions. Reporting time dropped significantly,
+    and users reported higher confidence in decisions backed by on-demand model
+    outputs and interactive data exploration.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>What I Built</h2>
+  <ul>
+    <li>Data loading and cleaning pipeline with automated type inference and missing value handling</li>
+    <li>Feature engineering module with configurable transformations per dataset schema</li>
+    <li>Trained Scikit-learn prediction model with cross-validation and hyperparameter tuning</li>
+    <li>Streamlit dashboard UI with multi-page navigation and dataset upload support</li>
+    <li>Interactive visualizations for distributions, correlations, and prediction outputs</li>
+    <li>Feature importance and model explanation components for interpretable outputs</li>
+  </ul>
+</div>
+
+
+<div class="project-section">
+  <h2>Challenges</h2>
+  <ul>
+    <li>Data cleaning at scale — heterogeneous real-world datasets with inconsistent formats and missing values</li>
+    <li>Feature selection without domain expertise required iteration between data exploration and model evaluation</li>
+    <li>Explainability — presenting model predictions in a way non-technical users could understand and trust</li>
+    <li>Usability — designing UI flows that matched how stakeholders actually think about the data, not how the model works</li>
+    <li>Keeping the prediction pipeline fast enough for interactive use without pre-computing all outputs</li>
+  </ul>
+</div>
+
+
+<div class="project-section">
+  <h2>What I Learned</h2>
+  <p>
+    The hardest part of this project was not the modeling — it was communicating
+    model outputs clearly to users who would act on them. A prediction with no
+    context is worse than no prediction, because it creates false confidence.
+    Good explainability design — showing feature importance, confidence ranges,
+    and data summaries alongside predictions — is what turns a model into a
+    decision support tool. I also learned that user feedback during development
+    consistently revealed mismatches between what engineers built and what
+    stakeholders actually needed, making iterative testing essential.
+  </p>
+</div>

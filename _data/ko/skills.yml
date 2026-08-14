@@ -1,0 +1,69 @@
+# 기술 스택 — 카테고리별 그룹화
+# 개별 기술 이름은 고유명사이므로 영어로 유지
+
+- category: "머신러닝 & AI"
+  items:
+    - Python
+    - PyTorch
+    - Scikit-learn
+    - Hugging Face
+    - DeepSpeed
+    - Model Evaluation
+    - Model Inference Optimization
+
+- category: "LLM & NLP"
+  items:
+    - RAG
+    - Prompt Engineering
+    - Embeddings
+    - Vector Search
+    - LangChain / Langfuse
+    - Google AI Studio
+    - OpenAI API
+    - Agentic Workflows
+    - AI agents 
+
+- category: "컴퓨터 비전"
+  items:
+    - OpenCV
+    - Image Classification
+    - OCR
+
+- category: "백엔드 & 배포"
+  items:
+    - FastAPI
+    - Docker
+    - GitHub Actions
+    - AWS
+
+- category: "데이터 & 데이터베이스"
+  items:
+    - Pandas
+    - NumPy
+    - SQL
+    - FAISS / Chroma / Pinecone
+
+- category: "소프트웨어 엔지니어링"
+  items:
+    - Git
+    - Linux
+    - Testing
+    - API Design
+    - CI/CD
+    - QA debugging
+    - Documentation
+
+- category: "소프트 스킬"
+  items:
+    - 문제 해결 능력
+    - 분석적 사고
+    - 기술 커뮤니케이션
+    - 부서 간 협업
+    - 적응력
+    - 시간 관리
+
+- category: "언어"
+  items:
+    - 스페인어
+    - 영어
+    - 한국어

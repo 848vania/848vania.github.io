@@ -1,0 +1,70 @@
+# Technical skills grouped by category.
+# Edit items lists freely — they render as skill pills.
+
+- category: "Machine Learning & AI"
+  items:
+    - Python
+    - PyTorch
+    - Scikit-learn
+    - Hugging Face
+    - DeepSpeed
+    - Model Evaluation
+    - Model Inference Optimization 
+
+- category: "LLMs & NLP"
+  items:
+    - RAG
+    - Prompt Engineering
+    - Embeddings
+    - Vector Search
+    - LangChain / Langfuse
+    - Google AI Studio
+    - OpenAI API
+    - Agentic Workflows
+    - AI agents 
+
+- category: "Computer Vision"
+  items:
+    - OpenCV
+    - Image Classification
+    - OCR
+
+- category: "Backend & Deployment"
+  items:
+    - FastAPI
+    - Docker
+    - GitHub Actions
+    - AWS 
+
+- category: "Data & Databases"
+  items:
+    - Pandas
+    - NumPy
+    - SQL
+    - FAISS / Chroma / Pinecone
+
+- category: "Software Engineering"
+  items:
+    - Git
+    - Linux
+    - Testing
+    - API Design
+    - CI/CD
+    - QA debugging
+    - Documentation
+
+- category: "Soft Skills"
+  items: 
+    - Problem-silving 
+    - Analytical thinking 
+    - Technical communication 
+    - Cross-functional collaboration 
+    - Adaptability 
+    - Time management
+
+- category: "Languages"
+  items: 
+    - Spanish 
+    - English 
+    - Korean
+

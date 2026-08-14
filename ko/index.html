@@ -1,0 +1,302 @@
+---
+layout: default
+lang: ko
+lang_equivalent: /
+title: "바니아 | AI 엔지니어"
+description: "TODO: AI 엔지니어 포트폴리오 — 머신러닝 프로젝트, 기술 스택, 자격증, 학력, 경력 소개. 대한민국 서울 기반."
+---
+
+{% assign profile = site.data.ko.profile %}
+
+<!-- ============================================================
+     소개 / HERO
+     ============================================================ -->
+<section id="about" class="hero" aria-label="바니아 오르티스 라모스 소개">
+  <div class="container">
+
+    <!-- 왼쪽: 소개 텍스트 -->
+    <div class="hero-content">
+      <h1>{{ profile.hero_headline }}</h1>
+
+      <p class="hero-subtitle">{{ profile.hero_subtitle }}</p>
+
+      {% if profile.badges %}
+      <div class="hero-badges" aria-label="주요 분야">
+        {% for badge in profile.badges %}
+        <span class="hero-badge">{{ badge }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div class="hero-cta">
+        <a href="{{ '/ko/#projects' | relative_url }}" class="btn-primary">프로젝트 보기</a>
+        <a href="{{ site.author.cv | relative_url }}" class="btn-secondary">이력서 다운로드</a>
+      </div>
+    </div>
+
+    <!-- 오른쪽: 프로필 카드 -->
+    <aside class="profile-card" aria-label="프로필 요약">
+
+      <div class="profile-photo-wrap">
+        {% if profile.photo and profile.photo != "" %}
+        <img
+          src="{{ profile.photo | relative_url }}"
+          alt="{{ profile.name }} 프로필 사진"
+          class="profile-photo"
+          width="88"
+          height="88"
+        >
+        {% else %}
+        <div class="profile-photo profile-photo--placeholder" role="img" aria-label="프로필 사진 placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" width="40" height="40">
+            <path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-5.33 0-8 2.67-8 4v1h16v-1c0-1.33-2.67-4-8-4z"/>
+          </svg>
+        </div>
+        {% endif %}
+      </div>
+
+      <p class="profile-name">{{ profile.name }}</p>
+      <p class="profile-role">{{ profile.role }}</p>
+      <p class="profile-location muted">📍 {{ profile.location }}</p>
+
+      <nav class="profile-links" aria-label="연락처 및 소셜 링크">
+        {% if profile.email and profile.email != "" %}
+        <a href="mailto:{{ profile.email }}" class="profile-link">
+          <span class="link-label">이메일</span>
+          <span>{{ profile.email }}</span>
+        </a>
+        {% else %}
+        <span class="profile-link">
+          <span class="link-label">이메일</span>
+          <span class="muted">— _data/ko/profile.yml에 추가</span>
+        </span>
+        {% endif %}
+
+        {% if profile.github and profile.github != "" %}
+        <a href="https://github.com/{{ profile.github }}" target="_blank" rel="noopener noreferrer" class="profile-link">
+          <span class="link-label">GitHub</span>
+          <span>github.com/{{ profile.github }}</span>
+        </a>
+        {% endif %}
+
+        {% if profile.linkedin and profile.linkedin != "" %}
+        <a href="https://linkedin.com/in/{{ profile.linkedin }}" target="_blank" rel="noopener noreferrer" class="profile-link">
+          <span class="link-label">LinkedIn</span>
+          <span>{{ profile.linkedin }}</span>
+        </a>
+        {% else %}
+        <span class="profile-link">
+          <span class="link-label">LinkedIn</span>
+          <span class="muted">— _data/ko/profile.yml에 추가</span>
+        </span>
+        {% endif %}
+
+        <a href="{{ site.author.cv | relative_url }}" class="profile-link">
+          <span class="link-label">이력서</span>
+          <span>PDF 다운로드</span>
+        </a>
+      </nav>
+    </aside>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     주요 프로젝트
+     ============================================================ -->
+<section id="projects" class="section" aria-label="주요 프로젝트">
+  <div class="container">
+    <div class="section-header">
+      <h2>주요 프로젝트</h2>
+      <p>TODO: 실용적인 머신러닝, 데이터 기반 시스템, 배포 가능한 애플리케이션에 초점을 맞춘 AI 엔지니어링 프로젝트.</p>
+    </div>
+
+    <div class="projects-grid">
+      {% for project in site.data.ko.projects %}
+        {% if project.featured %}
+          {% include project-card.html project=project %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     기술 스택
+     ============================================================ -->
+<section id="skills" class="section" aria-label="기술 스택">
+  <div class="container">
+    <div class="section-header">
+      <h2>기술 스택</h2>
+      <p>TODO: 데이터 처리, 모델 개발, 평가, API 개발 및 배포를 포함한 AI 엔지니어링 스택 전반에 걸쳐 작업합니다.</p>
+    </div>
+
+    <div class="skills-grid">
+      {% for group in site.data.ko.skills %}
+        {% include skill-card.html group=group %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     경력
+     ============================================================ -->
+<section id="experience" class="section" aria-label="경력 사항">
+  <div class="container">
+    <div class="section-header">
+      <h2>경력</h2>
+      <p>TODO: AI 엔지니어링 역할, 연구 직책 및 실무 프로젝트 작업.</p>
+    </div>
+
+    <div class="experience-list">
+      {% for job in site.data.ko.experience %}
+        {% include experience-card.html job=job %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     자격 및 인증 (학력 + 수상 + 활동)
+     ============================================================ -->
+<section id="credentials" class="section credentials-section" aria-label="자격증, 수상, 학력 및 활동">
+  <div class="container">
+    <div class="section-header">
+      <h2>자격 및 인증</h2>
+      <p>TODO: AI 엔지니어링 역량을 뒷받침하는 수상, 자격증, 교육 및 학력.</p>
+    </div>
+
+    <!-- 학력 -->
+    <div class="credentials-subsection">
+      <h3 class="subsection-title">학력</h3>
+      <div class="education-grid">
+        {% for edu in site.data.ko.education %}
+          {% include education-card.html education=edu %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- 수상 및 자격증 -->
+    <div class="credentials-subsection">
+      <h3 class="subsection-title">수상 및 자격증</h3>
+      <div class="credentials-grid">
+        {% for cred in site.data.ko.credentials %}
+          {% include credential-card.html credential=cred %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- 활동 -->
+    <div class="credentials-subsection">
+      <h3 class="subsection-title">활동</h3>
+      <div class="activities-list">
+        {% for activity in site.data.ko.activities %}
+          <div class="activity-item card">
+            <div class="activity-header">
+              <h3 class="activity-role">{{ activity.role }}</h3>
+              <span class="activity-dates muted">{{ activity.dates }}</span>
+            </div>
+            <p class="activity-org">{{ activity.organization }}</p>
+            {% if activity.bullets %}
+            <ul class="activity-bullets">
+              {% for bullet in activity.bullets %}
+              <li>{{ bullet }}</li>
+              {% endfor %}
+            </ul>
+            {% elsif activity.description %}
+            <p class="muted">{{ activity.description }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     논문 및 연구
+     ============================================================ -->
+<section id="research" class="section" aria-label="논문 및 연구">
+  <div class="container">
+    <div class="section-header">
+      <h2>논문 및 연구</h2>
+      <p>TODO: 머신러닝 및 AI 시스템 분야의 연구 배경 및 발표 연구.</p>
+    </div>
+
+    {% assign pubs = site.data.ko.publications %}
+
+    {% if pubs.items and pubs.items.size > 0 %}
+      <div class="publications-list">
+        {% for pub in pubs.items %}
+        <div class="publication-item">
+          <p class="pub-title">{{ pub.title }}</p>
+          <p class="pub-venue">{{ pub.venue }} &middot; {{ pub.year }}</p>
+          {% if pub.description %}
+          <p class="muted">{{ pub.description }}</p>
+          {% endif %}
+          {% if pub.url and pub.url != "" %}
+          <a href="{{ pub.url }}" target="_blank" rel="noopener noreferrer" class="project-link" style="display:inline-block;margin-top:0.5rem;">
+            논문 읽기 &rarr;
+          </a>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      {% if pubs.research_interests %}
+      <div class="research-interests" role="note">
+        <strong style="color: var(--color-soft); display:block; margin-bottom:0.5rem;">연구 관심사</strong>
+        {{ pubs.research_interests }}
+      </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</section>
+
+
+<!-- ============================================================
+     연락처
+     ============================================================ -->
+<section id="contact" class="section" aria-label="연락처">
+  <div class="container">
+    <div class="section-header">
+      <h2>연락처</h2>
+    </div>
+
+    <p class="contact-intro">
+      TODO: AI 엔지니어링 역할, 연구 중심 엔지니어링 기회 및 협업에 열려 있습니다.
+      아래 채널을 통해 자유롭게 연락주세요.
+    </p>
+
+    <div class="contact-links">
+      {% if profile.email and profile.email != "" %}
+      <a href="mailto:{{ profile.email }}" class="contact-link contact-link--primary">
+        이메일 보내기
+      </a>
+      {% endif %}
+
+      {% if profile.github and profile.github != "" %}
+      <a href="https://github.com/{{ profile.github }}" target="_blank" rel="noopener noreferrer" class="contact-link">
+        GitHub
+      </a>
+      {% endif %}
+
+      {% if profile.linkedin and profile.linkedin != "" %}
+      <a href="https://linkedin.com/in/{{ profile.linkedin }}" target="_blank" rel="noopener noreferrer" class="contact-link">
+        LinkedIn
+      </a>
+      {% endif %}
+
+      <a href="{{ site.author.cv | relative_url }}" class="contact-link">
+        이력서 다운로드
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,29 @@
+---
+layout: default
+---
+{% if page.lang == 'ko' %}{% assign projects_url = '/ko/#projects' %}{% assign projects_base = '/ko/projects/' %}{% assign back_label = '← 프로젝트로 돌아가기' %}{% assign next_label = '다음 프로젝트 →' %}{% else %}{% assign projects_url = '/#projects' %}{% assign projects_base = '/projects/' %}{% assign back_label = '← Back to Projects' %}{% assign next_label = 'Next Project →' %}{% endif %}
+
+<div class="project-page">
+  <div class="container">
+    <div class="project-detail">
+
+      <a href="{{ projects_url | relative_url }}" class="back-link">{{ back_label }}</a>
+
+      {{ content }}
+
+      <nav class="project-nav" aria-label="Project navigation">
+        <a href="{{ projects_url | relative_url }}" class="project-nav-link">
+          {{ back_label }}
+        </a>
+        {% if page.next_project_slug %}
+        <a href="{{ projects_base | append: page.next_project_slug | append: '/' | relative_url }}"
+           class="project-nav-link project-nav-link--next"
+           aria-label="Next project: {{ page.next_project_title }}">
+          {{ next_label }}
+        </a>
+        {% endif %}
+      </nav>
+
+    </div>
+  </div>
+</div>
