@@ -1,5 +1,6 @@
 # 연구 관심사 및 논문
-# TODO: research_interests를 한국어로 번역
+# 아직 논문이 없다면 research_interests 블록이 대신 표시됩니다.
+# 실제 논문이 있다면 items 목록에 추가하세요.
 
 items:
   - title: "Synthesis of Disparate Audio Species via Recurrent Neural Network"

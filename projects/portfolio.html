@@ -1,0 +1,204 @@
+---
+layout: project
+lang: en
+lang_equivalent: /ko/projects/portfolio/
+title: "Fraud Detection — End-to-End ML System | Vania Ortiz Ramos"
+description: "A production-shaped machine learning system for scoring financial transaction fraud risk — from synthetic data generation through training, a served REST API, monitoring, drift detection, and automated retraining, tracked with MLflow and containerized with Docker."
+---
+
+<div class="project-hero">
+  <h1>Fraud Detection — End-to-End ML System</h1>
+  <p class="project-summary">
+    A production-shaped machine learning system for scoring financial transaction
+    fraud risk &mdash; from synthetic data generation through training, a served REST
+    API, a monitoring dashboard, drift detection, and automated retraining, all
+    tracked with MLflow and containerized with Docker. The dataset is synthetically
+    generated for demonstration purposes; the model is not trained on real
+    financial data and should not be used for real-world fraud decisions.
+  </p>
+
+  <div class="project-meta">
+    <div aria-label="Technologies used">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">FastAPI</span>
+      <span class="tech-tag">scikit-learn</span>
+      <span class="tech-tag">MLflow</span>
+      <span class="tech-tag">Streamlit</span>
+      <span class="tech-tag">SQLAlchemy</span>
+      <span class="tech-tag">Docker Compose</span>
+      <span class="tech-tag">pytest / GitHub Actions</span>
+    </div>
+  </div>
+
+  <div class="project-detail-links">
+    <a href="https://github.com/848vania/FraudDetection" target="_blank" rel="noopener noreferrer" class="project-detail-link">GitHub &rarr;</a>
+  </div>
+</div>
+
+
+<div class="project-section">
+  <h2>Overview</h2>
+  <p>
+    This project implements a complete MLOps lifecycle around a single use case:
+    scoring the fraud risk of a financial transaction. Rather than stopping at a
+    model in a notebook, the system covers everything around the model &mdash;
+    experiment tracking, a model registry with champion/candidate aliasing,
+    cost-aware threshold selection, prediction logging, drift monitoring, an
+    automated retraining trigger and pipeline, and a deployable API plus
+    dashboard, all runnable locally or via Docker Compose.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>Problem</h2>
+  <p>
+    Fraud models are rarely evaluated on the axis that matters most in
+    production: cost. A model tuned to a default 0.5 decision threshold, or
+    judged purely on accuracy, tends to miss the fact that a missed fraud case
+    and a false alarm carry very different business costs. Beyond the model
+    itself, a fraud-scoring service also needs a way to track experiments
+    reproducibly, promote new models safely, log and monitor live predictions,
+    and detect when the incoming data has drifted enough to warrant retraining &mdash;
+    concerns that a standalone notebook model doesn't address at all.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>Solution</h2>
+  <p>
+    The system generates synthetic transaction data, validates and profiles it,
+    builds a feature set, and trains a classifier (baseline: logistic
+    regression) with every run logged to MLflow. Instead of a fixed 0.5 cutoff,
+    the decision threshold is chosen by minimizing <em>expected cost</em>, with
+    a missed fraud case weighted 20&times; more heavily than a false alarm by
+    default. The winning model is registered in the MLflow Model Registry under
+    a <code>champion</code> alias and served by a FastAPI endpoint that returns
+    a fraud probability, risk band, and decision, along with the top
+    contributing features for that prediction. Every prediction is logged to
+    SQLite, a drift detector compares live traffic against a reference dataset,
+    and a rules-based trigger decides whether to run the retraining pipeline &mdash;
+    which only promotes a new candidate model if it clears explicit
+    PR-AUC, cost, and recall margins over the current champion.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>Architecture / Workflow</h2>
+  <div class="workflow-steps" aria-label="Pipeline stages">
+    <span class="workflow-step">Synthetic Data</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Validation</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Feature Engineering</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Train + MLflow Tracking</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Cost-Based Threshold</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Model Registry</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">FastAPI Serving</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Monitoring + Drift</span>
+    <span class="workflow-arrow" aria-hidden="true">&#8594;</span>
+    <span class="workflow-step">Automated Retraining</span>
+  </div>
+  <p>
+    FastAPI exposes <code>/predict</code>, <code>/model/info</code>,
+    <code>/monitoring/summary</code>, and <code>/health</code>. A Streamlit
+    dashboard's Predict and Monitoring pages call the API live, while its Model
+    Performance and Drift &amp; Retraining pages read <code>data/results/*.json</code>
+    reports directly. An MLflow tracking server runs alongside the API and
+    dashboard for experiment tracking and the model registry, sharing the
+    underlying <code>mlflow.db</code> and <code>mlruns/</code> files but staying
+    off the live serving path &mdash; the API loads the registered model at startup
+    rather than depending on MLflow being up at inference time. The offline
+    pipeline &mdash; one CLI script per stage under <code>scripts/</code>, wrapped by
+    <code>Makefile</code> targets &mdash; generates synthetic data, builds features,
+    trains and evaluates models through MLflow, registers them, and produces the
+    drift and monitoring reports that the API and dashboard read. All three
+    services (API, dashboard, MLflow UI) run together via Docker Compose on a
+    shared network, with data and artifacts bind-mounted from the repo so
+    container output is visible on the host.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>Results / Impact</h2>
+  <div class="project-metrics">
+    <div class="metric-card">
+      <span class="metric-value">0.965</span>
+      <span class="metric-label">ROC-AUC (test set)</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">94.8%</span>
+      <span class="metric-label">Fraud capture rate (recall)</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">14.7%</span>
+      <span class="metric-label">Review rate at selected threshold</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">0.524</span>
+      <span class="metric-label">PR-AUC (test set)</span>
+    </div>
+  </div>
+  <p>
+    The baseline logistic regression model, evaluated on the held-out test split
+    at its expected-cost-minimizing threshold (0.48), reached a precision of
+    0.197 alongside the recall and review-rate figures above. Because a missed
+    fraud case is weighted 20&times; more heavily than a false alarm in the cost
+    function, the optimal operating point deliberately favors recall over
+    precision &mdash; catching nearly 95% of fraud at the cost of flagging about 15%
+    of legitimate transactions for review, rather than optimizing for raw
+    accuracy.
+  </p>
+</div>
+
+
+<div class="project-section">
+  <h2>What I Built</h2>
+  <ul>
+    <li>A FastAPI service that scores transactions in real time and returns a fraud probability, risk band, and approve/review decision at a cost-optimized threshold</li>
+    <li>MLflow-based experiment tracking and a model registry with champion/candidate aliasing</li>
+    <li>Cost-based threshold selection that minimizes expected cost instead of defaulting to 0.5, with configurable false-negative/false-positive cost weights</li>
+    <li>Per-prediction explainability for linear models &mdash; top contributing features with direction of effect (increases_risk / decreases_risk)</li>
+    <li>A SQLite-backed prediction log feeding volume, latency, review-rate, and risk-band monitoring</li>
+    <li>Drift detection between a reference dataset and live traffic (relative mean shift for numeric features, total variation distance for categorical features and risk bands)</li>
+    <li>A rules-based retraining trigger and a retraining pipeline that only promotes a candidate model if it beats the current champion on PR-AUC, expected cost, and minimum recall</li>
+    <li>A Streamlit dashboard with dedicated pages for predictions, model performance, monitoring, and drift/retraining</li>
+    <li>A three-container Docker Compose stack (API, dashboard, MLflow UI) with a pytest suite and GitHub Actions CI/CD for linting, testing, and image builds</li>
+  </ul>
+</div>
+
+
+<div class="project-section">
+  <h2>Challenges</h2>
+  <ul>
+    <li>Choosing a threshold-selection objective that reflects real business cost asymmetry rather than optimizing for accuracy or a fixed 0.5 cutoff</li>
+    <li>Designing drift metrics that work across mixed numeric and categorical features and remain interpretable (mean shift vs. total variation distance)</li>
+    <li>Defining promotion criteria strict enough that a retrained candidate can't replace the champion on a marginal or noisy improvement</li>
+    <li>Keeping the MLflow tracking/registry layer decoupled from the live serving path, so the API doesn't depend on MLflow being up at inference time</li>
+    <li>Structuring the offline pipeline as independent, config-driven CLI stages so a new model variant is a new YAML file, not a code change</li>
+  </ul>
+</div>
+
+
+<div class="project-section">
+  <h2>What I Learned</h2>
+  <p>
+    Building a fraud model is the easy part; building the system around it is
+    where most of the engineering effort actually goes. Framing threshold
+    selection as a cost-minimization problem rather than an accuracy target
+    changed which model behavior actually counted as "good," and made the
+    recall/precision trade-off an explicit, configurable decision rather than
+    an implicit one. Treating retraining as a governed pipeline &mdash; with drift
+    signals, monitoring metrics, and hard promotion criteria &mdash; rather than a
+    manual re-run of a training script, is what actually makes a model
+    trustworthy to keep in production over time.
+  </p>
+</div>

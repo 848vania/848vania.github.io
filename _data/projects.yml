@@ -1,48 +1,39 @@
 # Featured projects — edit title, description, tech, and links.
 # Set featured: true to show on homepage. Add github/link URLs when available.
 
-- title: "LLM Document QA System"
+- title: "Enterprise RAG Assistant"
   slug: "llm-document-qa"
   description: >
     A retrieval-augmented generation system for answering questions over
-    custom document collections. Supports semantic search, context ranking,
-    and streaming responses via a REST API.
+    enterprise documents using hybrid vector + keyword search, cross-encoder
+    reranking, citation validation, and a systematic offline evaluation
+    harness.
   tech:
     - Python
-    - RAG
-    - Embeddings
-    - Vector Search
     - FastAPI
-  github: ""    # https://github.com/848vania/repo-name
+    - RAG
+    - ChromaDB
+    - Cross-Encoder Reranking
+    - OpenAI API
+  github: "https://github.com/848vania/Production_RAG"
   link: ""      # https://live-demo-url.com
   featured: true
 
-- title: "Computer Vision Detection Pipeline"
-  slug: "computer-vision-detection-pipeline"
+- title: "Fraud Detection — End-to-End ML System"
+  slug: "portfolio"
   description: >
-    An end-to-end image analysis pipeline for object detection and
-    classification tasks. Designed for real-time inference with efficient
-    preprocessing and post-processing stages.
+    A production-shaped machine learning system for scoring financial
+    transaction fraud risk, covering the full MLOps lifecycle: experiment
+    tracking, cost-based threshold selection, a served REST API, drift
+    detection, and automated retraining — tracked with MLflow and
+    containerized with Docker.
   tech:
     - Python
-    - OpenCV
-    - PyTorch
-    - YOLO
-  github: ""
-  link: ""
-  featured: false  # under construction — hidden from homepage until ready
-
-- title: "Data Analysis & Prediction Dashboard"
-  slug: "data-analysis-prediction-dashboard"
-  description: >
-    An interactive dashboard for exploring datasets, identifying trends,
-    and generating model-based predictions. Built for non-technical
-    stakeholders to explore AI outputs without writing code.
-  tech:
-    - Python
-    - Pandas
-    - Scikit-learn
+    - FastAPI
+    - scikit-learn
+    - MLflow
     - Streamlit
-  github: ""
+    - Docker Compose
+  github: "https://github.com/848vania/FraudDetection"
   link: ""
-  featured: false  # under construction — hidden from homepage until ready
+  featured: true
